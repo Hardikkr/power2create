@@ -5,6 +5,7 @@ import 'package:power2create/data/may2020.dart';
 import 'package:power2create/data/monthly_expenses.dart';
 import 'package:power2create/widgets/add_new_expense.dart';
 import 'package:power2create/widgets/expenses_elevated_tab.dart';
+import 'package:power2create/widgets/filter_button.dart';
 import 'package:power2create/widgets/item_and_price.dart';
 
 class EmployeeExpenses extends StatefulWidget {
@@ -119,14 +120,7 @@ class _EmployeeExpensesState extends State<EmployeeExpenses> {
                                 // FILTER BUTTON
                                 (isSearching)
                                     ? Container()
-                                    : IconButton(
-                                        icon: Icon(
-                                          Icons.filter_alt_rounded,
-                                          color: Colors.white,
-                                          size: 30,
-                                        ),
-                                        onPressed: () {},
-                                      ),
+                                    : filterButton(),
 
                                 // ADD BUTTON
                                 IconButton(
@@ -184,7 +178,6 @@ class _EmployeeExpensesState extends State<EmployeeExpenses> {
                             Divider(
                               thickness: 2,
                             ),
-
                             ListView.builder(
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
