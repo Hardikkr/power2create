@@ -118,9 +118,7 @@ class _EmployeeExpensesState extends State<EmployeeExpenses> {
                                 ),
 
                                 // FILTER BUTTON
-                                (isSearching)
-                                    ? Container()
-                                    : filterButton(),
+                                (isSearching) ? Container() : FilterButton(),
 
                                 // ADD BUTTON
                                 IconButton(
@@ -130,7 +128,12 @@ class _EmployeeExpensesState extends State<EmployeeExpenses> {
                                     size: 30,
                                   ),
                                   onPressed: () {
-                                    addNewExpense(context);
+                                    showModalBottomSheet(
+                                      context: context,
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      builder: (context) => AddNewExpense(),
+                                    );
                                   },
                                 ),
                               ],
@@ -182,20 +185,19 @@ class _EmployeeExpensesState extends State<EmployeeExpenses> {
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
-                                return itemAndPrice(
-                                  widget.monthlyExpenses[index]["title"],
-                                  widget.monthlyExpenses[index]["price"],
+                                return ItemAndPrice(
+                                  item: widget.monthlyExpenses[index]["title"],
+                                  price: widget.monthlyExpenses[index]["price"],
                                   textColor: Colors.grey.shade600,
                                 );
                               },
                               itemCount: widget.monthlyExpenses.length,
                             ),
                             SizedBox(height: 20),
-                            expensesElevatedTab(
-                              context,
-                              "Net Expenses",
-                              monthlyExpenses[5]["net expense"],
-                              may2020,
+                            ExpensesElevatedTab(
+                              month: "Net Epenses",
+                              price: monthlyExpenses[5]["net expense"],
+                              monthlyExpenses: may2020,
                               isClickable: false,
                             ),
                           ],
@@ -210,27 +212,24 @@ class _EmployeeExpensesState extends State<EmployeeExpenses> {
                   height: 30,
                   thickness: 2,
                 ),
-                expensesElevatedTab(
-                  context,
-                  monthlyExpenses[4]["month"],
-                  monthlyExpenses[4]["net expense"],
-                  april2020,
+                ExpensesElevatedTab(
+                  month: monthlyExpenses[4]["month"],
+                  price: monthlyExpenses[4]["net expense"],
+                  monthlyExpenses: april2020,
                   isClickable: true,
                 ),
                 SizedBox(height: 20),
-                expensesElevatedTab(
-                  context,
-                  monthlyExpenses[3]["month"],
-                  monthlyExpenses[3]["net expense"],
-                  april2020,
+                ExpensesElevatedTab(
+                  month: monthlyExpenses[3]["month"],
+                  price: monthlyExpenses[3]["net expense"],
+                  monthlyExpenses: april2020,
                   isClickable: true,
                 ),
                 SizedBox(height: 20),
-                expensesElevatedTab(
-                  context,
-                  monthlyExpenses[2]["month"],
-                  monthlyExpenses[2]["net expense"],
-                  april2020,
+                ExpensesElevatedTab(
+                  month: monthlyExpenses[2]["month"],
+                  price: monthlyExpenses[2]["net expense"],
+                  monthlyExpenses: april2020,
                   isClickable: true,
                 ),
                 SizedBox(height: 20),
@@ -257,19 +256,17 @@ class _EmployeeExpensesState extends State<EmployeeExpenses> {
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           children: <Widget>[
-                            expensesElevatedTab(
-                              context,
-                              monthlyExpenses[1]["month"],
-                              monthlyExpenses[1]["net expense"],
-                              april2020,
+                            ExpensesElevatedTab(
+                              month: monthlyExpenses[1]["month"],
+                              price: monthlyExpenses[1]["net expense"],
+                              monthlyExpenses: april2020,
                               isClickable: true,
                             ),
                             SizedBox(height: 20),
-                            expensesElevatedTab(
-                              context,
-                              monthlyExpenses[0]["month"],
-                              monthlyExpenses[0]["net expense"],
-                              april2020,
+                            ExpensesElevatedTab(
+                              month: monthlyExpenses[0]["month"],
+                              price: monthlyExpenses[0]["net expense"],
+                              monthlyExpenses: april2020,
                               isClickable: true,
                             ),
                             SizedBox(height: 20),

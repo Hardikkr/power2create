@@ -19,8 +19,14 @@ class MyApp extends StatelessWidget {
       title: 'Power2Create',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        colorScheme: ColorScheme.light(primary: customPurple),
         primaryColor: customPurple,
         accentColor: customPurple,
+        dialogTheme: DialogTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+        ),
       ),
       home: Home(),
     );

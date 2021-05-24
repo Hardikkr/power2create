@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
-Widget itemAndPrice(String item, int price, {Color textColor = Colors.black}) {
-  return SizedBox(
+class ItemAndPrice extends StatelessWidget {
+  ItemAndPrice({this.item, this.price, this.textColor});
+
+  final item;
+  final price;
+  Color textColor = Colors.black;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
     height: 30,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,4 +32,5 @@ Widget itemAndPrice(String item, int price, {Color textColor = Colors.black}) {
       ],
     ),
   );
+  }
 }
